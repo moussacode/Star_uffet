@@ -1,0 +1,101 @@
+{% extends "layouts/public_base.html" %} {% load static %} 
+
+{% block title %}home{% endblock %} 
+
+{% block css %}
+
+
+{% endblock %} 
+
+{% block content %}
+   <section class="image-section">
+        <div class="image-detail">
+            <img src="{{ traiteur.image.url }}" alt="" srcset="">
+            <div class="bdg-detail">
+                <div class="rt">
+                            <i class="fa-solid fa-star"></i>
+                            <p>{{traiteur.note}}</p>
+                        </div>
+                <div class="valide-detail">
+                    
+                    {% if traiteur.statut == 'valide' %}
+            <p class=""><i class="fa-solid fa-circle-check"></i> Valide</p>
+            {% else %}
+            <p class="">Invalide</p>
+        {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="detail-layout">
+            <div class="detail-left">
+                <div class="card-detail-left">
+                    <strong class="bdg">À propos</strong>
+                    <p>{{traiteur.nomcomplet}}</p>
+                    <p>{{traiteur.description}}</p>
+
+
+                </div>
+                <div class="card-detail-left">
+                    <strong class="bdg">Spécialités</strong>
+                    <div class="badge">
+                                
+                                {% for s in traiteur.specialites.all %}
+              <p>
+                {{s.nom}}
+              </p>
+              {% endfor %}
+                            </div>
+
+
+                </div>
+                <div class="card-detail-left">
+                    <strong class="bdg">Services proposés</strong>
+                    <div class="detail-liste">
+                        <ul>
+                            <li>Mariage</li>
+                            
+                            <li>Mariage</li>
+                            <li>Restaurant</li>
+                           
+                            <li>Restaurant</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div></div>
+                <div></div>
+
+            </div>
+            <div class="detail-right">
+                <div class="card-detail-left">
+                    <strong class="bdg">Contact</strong>
+                    <p>{{traiteur.adresse}}</p>
+                    <p>{{traiteur.telephone}}</p>
+                    <p>{{traiteur.email}}</p>
+                </div>
+                <div class="card-detail-left">
+                    <strong class="bdg">Expérience</strong>
+                    <p>{{traiteur.experience}}  ans d'expérience</p>
+                </div>
+                <div class="card-detail-left">
+                    <strong class="bdg">Langues parlées</strong>
+                    <div class="badge">
+                                
+                                <p>Japonaise</p>
+                                <p>Francaise</p>
+                                <p>Anglais</p>
+                            </div>
+                </div>
+                <div class="card-detail-btn">
+                    <button class="detail-button">Contacter</button>
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}

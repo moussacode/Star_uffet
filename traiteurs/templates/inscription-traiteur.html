@@ -1,0 +1,110 @@
+{% extends "layouts/public_base.html" %} {% load static %} 
+
+{% block title %}home{% endblock %} 
+
+{% block css %}
+<style>
+    .hero-traiteur{
+    padding:60px 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    background: url("{% static 'images/banner-caterers.jpg' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+}
+</style>
+
+{% endblock %} 
+
+{% block content %}
+    <section class="hero-traiteur">
+      <div class="bg-traiteur"></div>
+      <div class="text-traiteur text-ins">
+        <h2>Devenir Traiteur</h2>
+        <p>
+          Rejoignez notre plateforme et développez votre activité de traiteur.
+        </p>
+      </div>
+    </section>
+    {% if success_msg %}
+    <p>{{success_msg}}</p>{% endif %}
+    <div class="formulaire">
+      <form action="" method='post' class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="block-tt">
+          <legend>Information de base</legend>
+
+          <div class="block-labint">
+            <div class="block-label">
+              <div class="label-ins">
+                <label for="">Nom Complet</label>
+                {{ form.nomcomplet }}
+              </div>
+              <div class="label-ins">
+                <label for="">Email : </label>
+                {{ form.email  }}
+              </div>
+              <div class="label-ins">
+                <label for="">Specialites </label>
+                {{ form.specialites }}
+              </div>
+              
+            </div>
+            <div class="block-label">
+              <div class="label-ins">
+                <label for="">Description</label>
+                {{form.description}}
+              </div>
+              <div class="label-ins">
+                <label for="">Experience </label>
+                {{ form.experience }}
+              </div>
+              
+            </div>
+          </div>
+        </div>
+       
+        <div class="block-tt">
+          <legend>Informations de contact</legend>
+
+          <div class="block-labint">
+            <div class="block-label">
+              <div class="label-ins">
+                <label for="">Téléphone</label>
+                {{form.telephone }}
+              </div>
+              <div class="label-ins">
+                <label for="">Adresse</label>
+                {{form.adresse }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-tt">
+          <legend>Photo de profil</legend>
+
+          <div class="block-labint">
+            <div class="block-label">
+              <div class="label-ins">
+
+                {{form.image}}
+
+                <p>Formats acceptés: JPG, JPEG, PNG. Taille maximale: 10MB</p>
+
+              </div>
+              <!-- <div class="label-ins"></div> -->
+            </div>
+          </div>
+        </div>
+        <div class="bas-form">
+          <button type="submit">S'inscrire</button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="bt"></div>
+  {% endblock %}

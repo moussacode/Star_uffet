@@ -1,0 +1,75 @@
+{% extends "layouts/public_base.html" %} 
+{% load static %}
+ {% block title%}home{% endblock %} 
+{% block css %}
+<style></style>
+
+{% endblock %}
+{% block content %}
+<section class="form-mobile-first">
+  <div class="haut-form-mobile">
+    <h1>Contactez Nous</h1>
+    <p>
+      Nous sommes là pour vous aider. N'hésitez pas à nous contacter pour toute
+      question ou suggestion.
+    </p>
+  </div>
+  <div class="bas-form-mobile">
+    <form action="">
+      <div class="block-tt-mobile-first">
+        <div class="bloc-grid-form">
+          <div class="label-ins-mobile-first">
+            <label for="">Prenom</label>
+            <input type="text" />
+          </div>
+          <div class="label-ins-mobile-first">
+            <label for="">Nom </label>
+            <input type="text" />
+          </div>
+        </div>
+        <div class="label-ins-mobile-first">
+          <label for="">Email</label>
+          <input type="text" />
+        </div>
+        <div class="label-ins-mobile-first">
+          <label for="">Numéro de téléphone</label>
+          <input type="text" />
+        </div>
+        <div class="label-ins-mobile-first">
+          <label for="">Message</label>
+          <textarea name="" id=""></textarea>
+        </div>
+        <div class="label-ins-mobile-first">
+          <button class="envoie">
+            <i class="fa-solid fa-envelope"></i> Envoyer
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="card-mobile">
+  <div class="card-item-mobile">
+    <div class="i-mobile">
+      <i class="fa-solid fa-phone"></i>
+    </div>
+    <p class="p-mobile">Téléphone</p>
+    <p>+221 XX XXX XX</p>
+  </div>
+  <div class="card-item-mobile">
+    <div class="i-mobile">
+      <i class="fa-solid fa-envelope"></i>
+    </div>
+    <p class="p-mobile">Message</p>
+    <p>contact@starbuffet.sn</p>
+  </div>
+  <div class="card-item-mobile">
+    <div class="i-mobile">
+      <i class="fa-solid fa-location-dot"></i>
+    </div>
+    <p class="p-mobile">Addresse</p>
+    <p>Dakar, Sénégal</p>
+  </div>
+</section>
+ {% endblock %}

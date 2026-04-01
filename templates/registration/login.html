@@ -1,0 +1,38 @@
+{% extends "layouts/public_base.html" %} {% load static %} 
+
+{% block title %}login{% endblock %} 
+
+{% block css %}
+
+
+{% endblock %} 
+
+{% block content %}
+<section class="service formulaire" >
+        <h2>Connexion</h2>
+        {% comment %} <p class="sertop">
+          Découvrez nos services de qualité pour tous vos besoins culinaires
+        </p> {% endcomment %}
+ 
+        <form  method="post" class='form'>
+         {% csrf_token %} 
+
+       
+        <div class="label-ins">
+                <label for="">Nom Complet</label>
+                {{ form.username }}
+              </div>
+              <div class="label-ins">
+                <label for="">Mot De Passe</label>
+                {{ form.password }}
+              </div>
+        <div class="bas-form">
+          <button type="submit">S'inscrire</button>
+        </div>
+    </form>
+   </section>
+   
+
+    
+    
+{% endblock %} 

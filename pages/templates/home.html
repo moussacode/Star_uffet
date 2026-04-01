@@ -1,0 +1,165 @@
+{% extends "layouts/public_base.html" %}
+{% load static %}
+{% block title %}home{% endblock  %}
+
+{% block css %}
+<style>
+
+.home-section{
+    padding:80px 0;
+    
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+     background: url("{% static 'images/banner-head-accueil.jpg' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.post-footer{
+    padding:60px 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    background: url("{% static 'images/banner-head-accueil.jpg' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+
+{% endblock  %}
+
+{% block content %}
+
+      <section id="home" class="home-section">
+        <div class="bg"></div>
+        <div class="home">
+          <div class="left">
+            <h1>
+              Decouvrez la
+              <span
+                >Cuisine <br />
+                Senegalaise</span
+              >
+            </h1>
+            <p>
+              Explorez les saveurs authentique du Senegal. Du Thieboudienne aux
+              <br />
+              Alloco,apprenez les secrets de la cuisine senegalaise avec nos
+              chefs experts.
+            </p>
+          </div>
+          <div class="right">
+            <div class="image">
+              <img
+                src="{% static "images/thieboudieunerouge.JPG" %}"
+                alt="thieboudieunerouge"
+              />
+              <div class="dispo">
+                <p>
+                  <i class="fa-solid fa-magnifying-glass"></i> Cours Disponible
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="stat">
+  {% for card in stat_cards %}
+    <div class="stat-card">
+      <h3>{{ card.titre }}</h3>
+      <p>{{ card.description }}</p>
+    </div>
+  {% endfor %}
+</section>
+      <section class="service">
+        <h2>Service</h2>
+        <p class="sertop">
+          Découvrez nos services de qualité pour tous vos besoins culinaires
+        </p>
+        <div class="gallery-service">
+    {% for service in services %}
+      <div class="service-card">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <a href="#">{{ service.link }}</a>
+      </div>
+    {% endfor %}
+  </div>
+      </section>
+      <section class="map">
+        <svg width="600" height="60" xmlns="http://www.w3.org/2000/svg">
+          <rect
+            width="600"
+            height="500"
+            x="10"
+            y="10"
+            rx="0"
+            ry="0"
+            fill="#FFF3E0"
+          />
+        </svg>
+        <h2>Trouver les restaurants les plus proches de vous?</h2>
+        <div class="carte">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7717.930671808241!2d-17.467891239171006!3d14.714551912105673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172bca77c0515%3A0x550cfa7df48f5dc!2sPG6M%2BF86%2C%20Unnamed%20Road%2C%20Dakar!5e0!3m2!1sfr!2ssn!4v1766163117733!5m2!1sfr!2ssn"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+      <section class="avis">
+  <h2>Ce que disent nos clients à propos des restaurants</h2>
+
+  <div class="avis-gallery">
+    {% for avis in avis_list %}
+      <div class="card-avis">
+        <div class="haut-card">
+          <div class="photo">
+            <p>{{ avis.initials }}</p>
+          </div>
+
+          <div class="nom-card">
+            <p>{{ avis.name }}</p>
+
+            <div class="rating">
+              {% for i in "12345" %}
+                {% if forloop.counter <= avis.rating %}
+                  <i class="fa-solid fa-star"></i>
+                {% else %}
+                  <i class="fa-solid fa-star off"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <p class="desc-avis">{{ avis.comment }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+      <section class="post-footer">
+        <div class="bg"></div>
+        <div class="text-footer">
+          <h2>
+            Prêt à commencer? <br />
+            Commandez dès maintenant.
+          </h2>
+          <p>
+            Découvrez nos restaurants partenaires et faites-vous livrer vos
+            plats préférés.
+          </p>
+          <button>Trouver un Restaurant</button>
+        </div>
+      </section>
+    
+
+{% endblock  %}

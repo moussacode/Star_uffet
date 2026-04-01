@@ -1,0 +1,147 @@
+{% extends "layouts/public_base.html" %} {% load static %} 
+
+{% block title %}home{% endblock %} 
+
+{% block css %}
+<style>
+    .hero-traiteur{
+    padding:60px 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    background: url("{% static 'images/banner-caterers.jpg' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+}
+  .post-footer {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("{% static 'images/banner-head-accueil.jpg' %}");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+
+{% endblock %} 
+
+{% block content %}
+
+<section class="hero-traiteur">
+  <div class="bg-traiteur"></div>
+  <div class="text-traiteur">
+    <h2>Nos Traiteurs</h2>
+    <p>
+      Découvrez nos traiteurs professionnels pour vos événements, mariages,
+      baptêmes et réceptions.
+    </p>
+  </div>
+</section>
+
+<section class="prestaire-traiteur">
+  <div class="filtre-content">
+    <h2>Filtre</h2>
+    <div class="selection-filter">
+      <div class="selection">
+        <label for="Specialite">Specialite</label>
+        <select name="specialite" id="">
+          <option value="">Toutes les spécialités</option>
+          {% for s in specialites %}
+          <option value="">{{s}}</option>
+          {% endfor %}
+          
+          
+        </select>
+      </div>
+      <div class="selection">
+        <label for="Specialite">Statut</label>
+        <select name="specialite" id="">
+          <option value="">Toutes les traiteur</option>
+          {% for s in traiteurs.est_actif %}
+          <option value="">{{s}}</option>
+          {% endfor %} 
+        </select>
+      </div>
+      <div class="filtre-btn">
+        <button class="btn-filtre">
+          <i class="fa-solid fa-filter"></i> filtre
+        </button>
+        <button class="btn-reinitialiser">
+          <i class="fa-solid fa-arrows-rotate"></i> Reinitialiser
+        </button>
+      </div>
+    </div>
+  </div>
+  {% if traiteurs %}
+  
+  <div class="groupe-traiteur">
+    
+    {% for t in traiteurs %}
+        <div class="card-traiteur">
+      <div class="left-traiteur">
+        {% if t.est_actif == True %}
+            <p class="valide"><i class="fa-solid fa-circle-check"></i> Valide</p>
+            {% else %}
+            <p class="invalide"><i class="fa-solid fa-circle-xmark"></i> Invalide</p>
+        {% endif %}
+        
+        <img src="{{ t.image.url }}" alt="">
+      </div>
+      <div class="right-traiteur">
+        <div class="left-left">
+          <div>
+            <p><i class="fa-solid fa-circle"></i> {{t.experience}} ans d'expérience</p>
+            <p>{{t.nomcomplet}}</p>
+            <p> Description : {{t.description}}</p>
+          </div>
+          <div>
+            <strong class="bdg">Spécialités:</strong>
+            <div class="badge">
+              {% for s in t.specialites.all %}
+              <p>
+                {{s.nom}}
+              </p>
+              {% endfor %}
+            </div>
+          </div>
+          <p><i class="fa-solid fa-phone"></i> {{t.telephone}}</p>
+        </div>
+        <div class="left-right">
+          <div class="rt">
+            <i class="fa-solid fa-star"></i>
+            <p>{{t.note}}</p>
+          </div>
+          <div class="voir-plus">
+           <a href="{% url 'detail_traiteurs' pk=t.id %}">Voir plus</a> 
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="groupe-traiteur">
+
+      <p>Aucun traiteur</p>
+  </div>
+  {% endif %}
+</section>
+<section class="post-footer">
+  <div class="bg"></div>
+  <div class="text-footer">
+    <h2>Vous êtes traiteur?</h2>
+    <p>Rejoignez notre réseau et développez votre activité événementielle!</p>
+    <button>
+      <a href="{% url "devenir_traiteur" %}">Devenir un Traiteur</a>
+    </button>
+  </div>
+</section>
+<div class="bt"></div>
+
+{% endblock  %}

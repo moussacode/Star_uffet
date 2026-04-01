@@ -1,0 +1,29 @@
+{% extends "layouts/public_base.html" %} {% load static %} 
+
+{% block title %}login{% endblock %} 
+
+{% block css %}
+
+
+{% endblock %} 
+
+{% block content %}
+<section class="service formulaire" >
+        <h2>Inscription</h2>
+         <p class="sertop">
+          Découvrez nos services de qualité pour tous vos besoins culinaires
+        </p> 
+ 
+        <form  method="post" class='form'>
+           {% csrf_token %}
+          {{form.as_p}}
+        <div class="bas-form">
+          <button type="submit">S'inscrire</button>
+        </div>
+    </form> 
+   </section>
+   
+
+    
+    
+{% endblock %} 
