@@ -124,6 +124,19 @@
       </div>
     </div>
     {% endfor %}
+    <div class="pagination">
+
+    {% if traiteurs.has_previous %}
+        <a href="?page={{ traiteurs.previous_page_number }}">Précédent</a>
+    {% endif %}
+
+    <span>Page {{ traiteurs.number }} sur {{ traiteurs.paginator.num_pages }}</span>
+
+    {% if traiteurs.has_next %}
+        <a href="?page={{ traiteurs.next_page_number }}">Suivant</a>
+    {% endif %}
+
+</div>
   </div>
   {% else %}
   <div class="groupe-traiteur">
